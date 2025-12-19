@@ -1,5 +1,6 @@
 import time 
 def vigenere(message, key, direction=1):
+    key_new = key.lower()
     key_index = 0
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     final_message = ''
@@ -9,7 +10,7 @@ def vigenere(message, key, direction=1):
             final_message += char
         else:        
             # Find the right key character to encode/decode
-            key_char = key[key_index % len(key)]
+            key_char = key_new[key_index % len(key_new)]
             key_index += 1
 
             # Define the offset and the encrypted/decrypted letter
@@ -30,9 +31,9 @@ while True:
         encrypted_text = str(input("Enter unencrypted message: "))
         custom_key = str(input("Enter encryption key: "))
         encryption = encrypt(encrypted_text, custom_key)
-        print(f'\nEncrypted text: {encrypted_text}')
+        print(f'\nOriginal text: {encrypted_text}')
         print(f'Key: {custom_key}')
-        print(f'\nEncrypted text: {encryption}\n')
+        print(f'Encrypted text: {encryption}\n')
     elif a.lower() == 'decrypt':#decrpytion work is being done
         encrypted_text = str(input("Enter encrypted message: "))
         custom_key = str(input("Enter encryption key: "))
